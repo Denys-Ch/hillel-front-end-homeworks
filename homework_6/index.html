@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="returnNumbersFrom20To30()">Numbers from 20 to 30</button>
+    <button type="button" onclick="returnDollarExchange()">Dollar Exchange</button>
+    <button type="button" onclick="returnNumbersFrom1To100()">Numbers from 1 to 100</button>
+    <button type="button" onclick="checkIfPrime()">Check if number is prime</button>
+    <button type="button" onclick="checkIfPossible()">Check if number can be calculated by exponentiation of 3</button>
+    <script>
+        function returnNumbersFrom20To30() {
+            let str = '';
+            for (let i = 20; i <= 30; i += 0.5) {
+                str = str + i + ' ';
+            }
+            console.log(str);
+        }
+
+        function returnDollarExchange() {
+            let str2 = '';
+            let dollar = 27;
+            for (let i = 10; i <= 100; i += 10) {
+                str2 = str2 + (i * dollar) + ' ';
+            }
+            console.log(str2);
+        }
+
+        function returnNumbersFrom1To100() {
+            let num = +prompt('Введіть ціле число', '10');
+            if (Boolean(Number.isInteger(num))) {
+                let str3 = '';
+                for (let i = 1; i <= 100; i++) {
+                    if (i ** 2 <= num) {
+                        str3 = str3 + i + ' ';
+                    }
+                }
+                console.log(str3);
+            }
+            else {
+                alert('Введене число не є цілим');
+            }
+
+        }
+
+        function checkIfPrime() {
+            let value = +prompt('Введіть ціле число');
+            if (Boolean(Number.isInteger(value))) {
+                let isPrime = true;
+                if (value === 1) {
+                    console.log('Не є простим числом');
+                } else if (value === 2) {
+                    console.log('Є простим числом');
+                } else if (value > 1) {
+                    for (let i = 2; i < value; i++) {
+                        if (value % i === 0) {
+                            isPrime = false;
+                            break;
+                        }
+                    }
+                    if (Boolean(isPrime)) {
+                        console.log('Є простим числом');
+                    } else {
+                        console.log('Не є простим числом');
+                    }
+                } else {
+                    console.log('Не є простим числом');
+                }
+            }
+            else {
+                alert('Введене число не є цілим');
+            }
+
+        }
+
+        function checkIfPossible() {
+            let num2 = +prompt('Введіть число');
+            let isPossible = false;
+            for (let i = 0; i < 1000; i++) {
+                if (3 ** i === num2) {
+                    isPossible = true;
+                    break;
+                }
+            }
+            if (Boolean(isPossible)) {
+                console.log('Можна');
+            } else {
+                console.log('Не можна');
+            }
+        }
+    </script>
+</body>
+
+</html>
