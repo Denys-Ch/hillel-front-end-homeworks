@@ -50,7 +50,7 @@
 
         function checkIfPrime() {
             let value = +prompt('Введіть ціле число');
-            if (Boolean(Number.isInteger(value))) {
+            if (Number.isInteger(value)) {
                 let isPrime = true;
                 if (value === 1) {
                     console.log('Не є простим числом');
@@ -63,7 +63,7 @@
                             break;
                         }
                     }
-                    if (Boolean(isPrime)) {
+                    if (isPrime) {
                         console.log('Є простим числом');
                     } else {
                         console.log('Не є простим числом');
@@ -80,13 +80,13 @@
         function checkIfPossible() {
             let num2 = +prompt('Введіть число');
             let isPossible = false;
-            for (let i = 0; i < 1000; i++) {
+            for (let i = 0; i < num2; i++) {
                 if (3 ** i === num2) {
                     isPossible = true;
                     break;
                 }
             }
-            if (Boolean(isPossible)) {
+            if (isPossible) {
                 console.log('Можна');
             } else {
                 console.log('Не можна');
