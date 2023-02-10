@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button type="button" onclick="testRemoveElement()">Remove element from the array</button>
+    <button type="button" onclick="testCalcAverage()">Calculate average</button>
+    <button type="button" onclick="testRemoveSymbols()">Remove symbols from the string</button>
+    <script>
+        function testRemoveElement() {
+            function removeElement(array, item) {
+                if (array.indexOf(item) === -1) {
+                    console.log('Елемент не знайдено');
+                } else {
+                    array.splice(array.indexOf(item), 1);
+                    return array;
+                }
+            }
+            const array = [1, 2, 3, 4, 5, 6, 7];
+            removeElement(array, 5);
+            console.log(array);
+        }
+
+        function testCalcAverage() {
+            function calcAverage(collection) {
+                let numCollection = [];
+                for (let element of collection) {
+                    if (typeof element === 'number') {
+                        numCollection.push(element);
+                    }
+                }
+                let sum = 0;
+                let average = 0;
+                for (let number of numCollection) {
+                    average = (sum += number) / numCollection.length;
+                }
+                return average;
+            }
+            const collection = [1, true, 2, 3, 'string', 2, 7, '4'];
+            console.log(calcAverage(collection));
+        }
+
+        function testRemoveSymbols() {
+            function removeSymbols(string, symbols) {
+                function isIncluded(symbol) {
+                    return !symbols.includes(symbol);
+                }
+                let newString = string.filter(isIncluded);
+                console.log(newString.join(''));
+            }
+            removeSymbols(prompt('Введіть рядок').split(''), prompt('Введіть символи для видалення').split(''));
+        }
+    </script>
+</body>
+
+</html>
