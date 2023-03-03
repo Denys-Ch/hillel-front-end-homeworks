@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const _btn = document.querySelector('.js--btn');
+            _btn.addEventListener('click', function generateList(array) {
+                array = [1, 2, 3, [1, 2, 3, 4], 5, [1, 2], 7, [1, 2, 3], 9, 10];
+                let _list = document.createElement('ul');
+                let _li = document.createElement('li');
+                document.body.appendChild(_list);
+                array.forEach(item => {
+                    if (Array.isArray(item)) {
+                        let _subList = document.createElement('ul');
+                        _list.appendChild(_li);
+                        _li.appendChild(_subList);
+                        item.forEach(element => {
+                            let _li2 = document.createElement('li');
+                            _li2.innerHTML = '1.' + element;
+                            _subList.appendChild(_li2);
+                        });
+                        _list.appendChild(_li);
+                        _li = document.createElement('li');
+                    } else {
+                        _li.innerHTML += item;
+                        _list.appendChild(_li);
+                        _li = document.createElement('li');
+                    }
+                });
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <button class="js--btn" type="button">Generate List</button>
+</body>
+
+</html>

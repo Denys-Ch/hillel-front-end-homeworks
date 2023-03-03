@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const _btnEnter = document.querySelector(".js--enter-btn");
+            const _btnGo = document.querySelector(".js--go-btn");
+            let link;
+            _btnEnter.addEventListener("click", function () {
+                let promptLink = prompt("Please enter link");
+                if (promptLink.includes("https") || promptLink.includes("http")) {
+                    link = promptLink;
+                } else {
+                    link = "https://" + promptLink;
+                }
+                console.log(link);
+            });
+
+            _btnGo.addEventListener("click", function () {
+                location.href = link;
+            });
+        }) 
+    </script>
+</head>
+
+<body>
+    <button class="js--enter-btn" type="button">Enter Link</button>
+    <button class="js--go-btn" type="button">Go</button>
+</body>
+
+</html>
