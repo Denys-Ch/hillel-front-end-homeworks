@@ -26,7 +26,7 @@ function UserForm({ form, content, userInfo, addBtn }) {
         form.classList.remove('open');
         const currentUsers = JSON.parse(localStorage.getItem('users')) || [];
         currentUsers.push(user);
-        localStorage.setItem('users', JSON.stringify(currentUsers))
+        localStorage.setItem('users', JSON.stringify(currentUsers));
     }
     this.removeUser = function (delBtn) {
         let _id = +delBtn.closest('tr').firstChild.innerHTML;
@@ -44,18 +44,10 @@ function UserForm({ form, content, userInfo, addBtn }) {
         if (users) {
             users.forEach(user => this.userTemplate(user))
         }
-        const delUser = document.querySelectorAll('.js--delete_btn');
-        delUser.forEach(delBtn => {
-            delBtn.addEventListener('click', () => {
-                if (window.confirm('Ви впевнені?')) {
-                    this.removeUser(delBtn);
-                }
-            })
-        });
     }
     this.userTemplate = function (user) {
         content.insertAdjacentHTML('beforeend', (
-            `<tr class="js--table">` +
+            `<tr>` +
             `<td>${user.id}</td>` +
             `<td>${user.name}</td>` +
             `<td>${user.phone}</td>` +
@@ -63,6 +55,17 @@ function UserForm({ form, content, userInfo, addBtn }) {
             `<td><button class="btn">View</button><button class="btn js--edit_btn">Edit</button><button class="btn js--delete_btn">Delete</button></td>` +
             `</tr>`
         ))
+        const delUser = document.querySelectorAll('.js--delete_btn');
+        delUser.forEach(delBtn => {
+            if (delBtn.getAttribute('listener') !== 'true') {
+                delBtn.setAttribute('listener', 'true');
+                delBtn.addEventListener('click', () => {
+                    if (window.confirm('Ви впевнені?')) {
+                        this.removeUser(delBtn);
+                    }
+                })
+            }
+        })
     }
 }
 
