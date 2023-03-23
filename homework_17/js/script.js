@@ -3,9 +3,9 @@ function UserForm({ form, content, userInfo, addBtn }) {
         form.addEventListener('submit', (event) => {
             event.preventDefault();
             this.addUser(
-                form.elements['name'].value,
-                form.elements['phone'].value,
-                form.elements['age'].value
+                form.elements.name.value,
+                form.elements.phone.value,
+                form.elements.age.value
             )
         })
         addBtn.addEventListener('click', function () {
@@ -46,26 +46,21 @@ function UserForm({ form, content, userInfo, addBtn }) {
         }
     }
     this.userTemplate = function (user) {
-        content.insertAdjacentHTML('beforeend', (
-            `<tr>` +
+        const newUser = document.createElement('tr');
+        newUser.insertAdjacentHTML('beforeend',
             `<td>${user.id}</td>` +
             `<td>${user.name}</td>` +
             `<td>${user.phone}</td>` +
             `<td>${user.age}</td>` +
-            `<td><button class="btn">View</button><button class="btn js--edit_btn">Edit</button><button class="btn js--delete_btn">Delete</button></td>` +
-            `</tr>`
-        ))
-        const delUser = document.querySelectorAll('.js--delete_btn');
-        delUser.forEach(delBtn => {
-            if (delBtn.getAttribute('listener') !== 'true') {
-                delBtn.setAttribute('listener', 'true');
-                delBtn.addEventListener('click', () => {
-                    if (window.confirm('Ви впевнені?')) {
-                        this.removeUser(delBtn);
-                    }
-                })
+            `<td><button class="btn">View</button><button class="btn js--edit_btn">Edit</button><button class="btn js--delete_btn">Delete</button></td>`
+        )
+        const delBtn = newUser.querySelector('.js--delete_btn');
+        delBtn.addEventListener('click', () => {
+            if (window.confirm('Ви впевнені?')) {
+                this.removeUser(delBtn);
             }
         })
+        content.appendChild(newUser);
     }
 }
 
