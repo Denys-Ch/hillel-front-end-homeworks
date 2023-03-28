@@ -7,17 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    li {
+        color: red;
+    }
 
+    li.active {
+        color: green;
+    }
+</style>
 <body>
-    <style>
-        li {
-            color: red;
-        }
-
-        li.active {
-            color: green;
-        }
-    </style>
     <label>
         <input class="input">
     </label>
@@ -41,7 +40,7 @@
             }
             if (event.target.value.match(conditionUpper)) {
                 document.querySelector('.js--uppercase').classList.add('active');
-            } else if(!event.target.value.match(conditionUpper)) {
+            } else if (!event.target.value.match(conditionUpper)) {
                 document.querySelector('.js--uppercase').classList.remove('active');
             }
             if (event.target.value.match(conditionChr)) {
@@ -51,7 +50,7 @@
             }
             if (event.target.value.match(conditionMin)) {
                 document.querySelector('.js--min-length').classList.add('active');
-            } else if(!event.target.value.match(conditionMin)) {
+            } else if (!event.target.value.match(conditionMin)) {
                 document.querySelector('.js--min-length').classList.remove('active');
             }
         })
