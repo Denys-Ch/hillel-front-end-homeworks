@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        li {
+            color: red;
+        }
+
+        li.active {
+            color: green;
+        }
+    </style>
+    <label>
+        <input class="input">
+    </label>
+    <ul>
+        <li class="js--uppercase">Одна велика буква</li>
+        <li class="js--number">Одна цифра</li>
+        <li class="js--character">Один знак пунктуації</li>
+        <li class="js--min-length">Мінімум 8 символів</li>
+    </ul>
+    <script>
+        const _input = document.querySelector('.input');
+        const conditionNumber = /(\d)/;
+        const conditionUpper = /[A-ZА-ЯҐІЇЄ]/;
+        const conditionChr = /\W/;
+        const conditionMin = /.{8,}/;
+        _input.addEventListener('input', (event) => {
+            if (event.target.value.match(conditionNumber)) {
+                document.querySelector('.js--number').classList.add('active');
+            } else if (!event.target.value.match(conditionNumber)) {
+                document.querySelector('.js--number').classList.remove('active');
+            }
+            if (event.target.value.match(conditionUpper)) {
+                document.querySelector('.js--uppercase').classList.add('active');
+            } else if(!event.target.value.match(conditionUpper)) {
+                document.querySelector('.js--uppercase').classList.remove('active');
+            }
+            if (event.target.value.match(conditionChr)) {
+                document.querySelector('.js--character').classList.add('active');
+            } else if (!event.target.value.match(conditionChr)) {
+                document.querySelector('.js--character').classList.remove('active');
+            }
+            if (event.target.value.match(conditionMin)) {
+                document.querySelector('.js--min-length').classList.add('active');
+            } else if(!event.target.value.match(conditionMin)) {
+                document.querySelector('.js--min-length').classList.remove('active');
+            }
+        })
+    </script>
+</body>
+
+</html>
