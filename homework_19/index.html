@@ -16,6 +16,7 @@
         color: green;
     }
 </style>
+
 <body>
     <label>
         <input class="input">
@@ -29,29 +30,34 @@
     <script>
         const _input = document.querySelector('.input');
         const conditionNumber = /(\d)/;
-        const conditionUpper = /[A-ZА-ЯҐІЇЄ]/;
-        const conditionChr = /\W/;
+        const conditionUpper = /[A-ZА-ЯҐІЇЄЁ]/;
+        const conditionChr = /[.,\/#!$%\^&\*;:{}=\-_`~()\\\|<>?'"\[\]@\+]/;
         const conditionMin = /.{8,}/;
         _input.addEventListener('input', (event) => {
-            if (event.target.value.match(conditionNumber)) {
-                document.querySelector('.js--number').classList.add('active');
-            } else if (!event.target.value.match(conditionNumber)) {
-                document.querySelector('.js--number').classList.remove('active');
+            const value = event.target.value;
+            const _number = document.querySelector('.js--number');
+            const _uppercase = document.querySelector('.js--uppercase');
+            const _character = document.querySelector('.js--character');
+            const _minLength = document.querySelector('.js--min-length');
+            if (value.match(conditionNumber)) {
+                _number.classList.add('active');
+            } else {
+                _number.classList.remove('active');
             }
-            if (event.target.value.match(conditionUpper)) {
-                document.querySelector('.js--uppercase').classList.add('active');
-            } else if (!event.target.value.match(conditionUpper)) {
-                document.querySelector('.js--uppercase').classList.remove('active');
+            if (value.match(conditionUpper)) {
+                _uppercase.classList.add('active');
+            } else {
+                _uppercase.classList.remove('active');
             }
-            if (event.target.value.match(conditionChr)) {
-                document.querySelector('.js--character').classList.add('active');
-            } else if (!event.target.value.match(conditionChr)) {
-                document.querySelector('.js--character').classList.remove('active');
+            if (value.match(conditionChr)) {
+                _character.classList.add('active');
+            } else {
+                _character.classList.remove('active');
             }
-            if (event.target.value.match(conditionMin)) {
-                document.querySelector('.js--min-length').classList.add('active');
-            } else if (!event.target.value.match(conditionMin)) {
-                document.querySelector('.js--min-length').classList.remove('active');
+            if (value.match(conditionMin)) {
+                _minLength.classList.add('active');
+            } else {
+                _minLength.classList.remove('active');
             }
         })
     </script>
