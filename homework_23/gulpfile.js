@@ -13,14 +13,14 @@ const concat = require('gulp-concat');
 task('browser-sync', () => {
     browserSync({
         server: {
-            baseDir: 'src'
+            baseDir: ['temp', 'src']
         },
         notify: false
     });
 });
 
 task('edit', () => {
-    return src('src/*.html')
+    return src('src/index.html')
         .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -32,7 +32,7 @@ task('js-script', () => {
 task('js', () => {
     return src(['node_modules/jquery/dist/jquery.min.js', 'src/js/main.js'])
         .pipe(concat('script.js'))
-        .pipe(dest('src/js/'))
+        .pipe(dest('temp/js'))
         .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -41,7 +41,7 @@ task('sass', () => {
         .pipe(sourcemap.init())
         .pipe(sass({ outputStyle: 'expanded' }))
         .pipe(sourcemap.write("."))
-        .pipe(dest('src/css'))
+        .pipe(dest('temp/css'))
         .pipe(browserSync.reload({ stream: true }));
 });
 
@@ -61,7 +61,7 @@ task('html', () => {
 });
 
 task('uglify', () => {
-    return src('src/js/script.js')
+    return src('temp/js/script.js')
         .pipe(uglify())
         .pipe(rename({ suffix: '.min' }))
         .pipe(dest('dist/js'));
@@ -79,6 +79,6 @@ task('watch', () => {
     watch('src/js/main.js', parallel('js', 'js-script'));
 });
 
-task('build', series('html', 'css', 'uglify', 'imagemin'));
+task('build', series('html', 'css', 'js', 'js-script', 'uglify', 'imagemin'));
 
-task('default', parallel('sass', 'browser-sync', 'js', 'js-script', 'watch'));
+task('default', parallel('sass', 'browser-sync', 'js', 'js-script',  'watch'));
