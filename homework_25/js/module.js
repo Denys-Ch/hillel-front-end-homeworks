@@ -4,7 +4,7 @@ export function Form({ _form, _formInput, _data }) {
         event.preventDefault();
         this.input = event.target.querySelector(_formInput).value.trim().toLowerCase();
         this.action = document.querySelector(_form).action;
-        swapiForm.getInfo();
+        this.getInfo();
         document.querySelector(".form__btn-loader").classList.add("active");
     }
     this.getInfo = async () => {
