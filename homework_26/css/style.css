@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 75%;
+}
+
+.form {
+    display: grid;
+    gap: 15px;
+    width: 325px;
+}
+
+button {
+    background-color: rgba(23, 8, 235, 0.918);
+    color: white;
+    padding: 10px 5px 10px;
+    border-radius: 5px;
+    width: 100px;
+    justify-self: center;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    padding: 5px;
+}
