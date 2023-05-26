@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useInputField } from '../hooks/useInputField';
+import TextField from '@mui/material/TextField';
 import '../../App.css';
 import Button from '../components/Button';
 import Item from '../components/Item';
 
 export default function App() {
-    const formInput = useRef(null);
     const [items, setItems] = useState([]);
     const inputText = useInputField('');
 
@@ -55,18 +55,20 @@ export default function App() {
                 className='form'
                 onSubmit={handleNewItem}
             >
-                <input
-                    ref={formInput}
+                <TextField
+                    size='small'
+                    fullWidth
+                    label="Task"
+                    variant="outlined"
                     onChange={inputText.onChange}
                     value={inputText.inputValue}
                     type='text'
                     name='value'
-                    required
                     className='form__input'
                 />
                 <Button
-                disabled={disableSubmit}
-                text='Add' />
+                    disabled={disableSubmit}
+                    text='Add' />
             </form>
             <div>
                 {items.map((item) => (
