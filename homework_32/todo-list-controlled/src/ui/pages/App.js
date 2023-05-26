@@ -20,6 +20,7 @@ export default function App() {
         ];
         setItems(newItems);
         localStorage.setItem('items', JSON.stringify(newItems));
+        inputText.onChange({ target: { value: '' } })
     }
 
     useEffect(
