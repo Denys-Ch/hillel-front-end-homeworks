@@ -3,8 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const taskSlice = createSlice({
     name: 'taskHandler',
     initialState: {
-        items: [],
-        taskCount: 0
+        items: []
     },
     reducers: {
         addItem: (state, action) => {
@@ -12,12 +11,11 @@ const taskSlice = createSlice({
                 ...state.items,
                 { id: Math.random(), text: action.payload, isChecked: false }
             ];
-            state.taskCount = state.taskCount + 1;
         }
     }
 });
 
 export const newItems = state => state.taskHandler.items;
-export const taskCount = state => state.taskHandler.taskCount;
-export const { addItem, setLocalStorage } = taskSlice.actions;
+export const taskCount = state => state.taskHandler.items.length;
+export const { addItem } = taskSlice.actions;
 export default taskSlice.reducer;
