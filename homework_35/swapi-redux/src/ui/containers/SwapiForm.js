@@ -8,16 +8,13 @@ import { newItems } from '../../engine/core/swapiSlice';
 
 export default function SwapiForm() {
     const dispatch = useDispatch();
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
         const input = values.request
-        const fetchData = async () => {
-            const response = await axios.get(`https://swapi.dev/api/${input}`);
-            const URLInfo = input.split('/');
-            const URLController = URLInfo[0];
-            const requestId = URLInfo[1];
-            dispatch(addItem([response.data, URLController, requestId]));
-        }
-        fetchData();
+        const response = await axios.get(`https://swapi.dev/api/${input}`);
+        const URLInfo = input.split('/');
+        const URLController = URLInfo[0];
+        const requestId = URLInfo[1];
+        dispatch(addItem([response.data, URLController, requestId]));
         values.request = ''
     };
     const items = useSelector(newItems);

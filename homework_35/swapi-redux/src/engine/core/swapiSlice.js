@@ -3,9 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const requestSlice = createSlice({
     name: 'requestHandler',
     initialState: {
-        items: [],
-        URLController: '',
-        URLId: ''
+        items: []
     },
     reducers: {
         addItem: (state, action) => {
