@@ -1,4 +1,4 @@
-import { put, select } from 'redux-saga/effects';
+import { put, select, call } from 'redux-saga/effects';
 import { removeItem } from '../../taskSlice';
 
 export function* callRemoveTodoWorker(action) {
@@ -7,6 +7,6 @@ export function* callRemoveTodoWorker(action) {
     const stateItems = yield select();
     const items = stateItems.taskHandler.items;
     const newItems = items.filter(item => item.id !== id);
-    localStorage.setItem('items', JSON.stringify(newItems));
+    yield call([localStorage, 'setItem'],'items', JSON.stringify(newItems));
 }
 

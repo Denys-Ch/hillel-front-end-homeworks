@@ -1,7 +1,7 @@
-import { put } from 'redux-saga/effects';
+import { put, call } from 'redux-saga/effects';
 import { addItem } from '../../taskSlice';
 
 export function* callRemoveAllWorker() {
     yield put(addItem([]));
-    localStorage.setItem('items', JSON.stringify([]));
+    yield call([localStorage, 'setItem'],'items', JSON.stringify([]));
 }

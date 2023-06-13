@@ -22,11 +22,8 @@ const taskSlice = createSlice({
         checkItem: (state, action) => {
             const id = action.payload;
             const itemIndex = state.items.findIndex(item => item.id === id);
-            if (state.items[itemIndex].isChecked) {
-                state.items[itemIndex].isChecked = false;
-            } else {
-                state.items[itemIndex].isChecked = true;
-            }
+            const currentCheckedState = state.items[itemIndex].isChecked;
+            state.items[itemIndex].isChecked = !currentCheckedState;
         }
     }
 });
