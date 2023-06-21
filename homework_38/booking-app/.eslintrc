@@ -1,0 +1,26 @@
+{
+  "extends": ["airbnb"],
+  "globals": {
+    "window": false,
+    "document": false
+  },
+  "rules": {
+    "indent": ["error", 4],
+    "react/jsx-indent": ["error", 4],
+    "react/jsx-indent-props": ["error", 4],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "max-len": "off",
+    "import/prefer-default-export": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
+    "react/jsx-one-expression-per-line": [0],
+    "no-console": [0]
+  }
+}
